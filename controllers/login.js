@@ -21,7 +21,7 @@ export default(function(req, res) {
       console.log("Result Login: ", JSON.stringify(results[0].Email));
       console.log(results[0].Nombre); 
       console.log(results[0].id);
-      res.redirect('/securepage')
+      res.redirect('/')
     } else {
       var results = {
         error: error
