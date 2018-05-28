@@ -11,7 +11,7 @@ var config =
           };
           reject(error);
         } else {
-          console.log("Result GET: ", JSON.stringify(results));
+          console.log("Result Usuario: ", JSON.stringify(results));
           resolve(results);
         }
       });

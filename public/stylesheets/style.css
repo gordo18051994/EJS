@@ -157,7 +157,7 @@ border-color: #1CA347;
 }
 
 .footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
@@ -167,3 +167,17 @@ border-color: #1CA347;
 .container p {
   padding-left: 40% 
 }
+
+#map {
+  height: 400px;
+  width: 100%;
+  margin-bottom: 50px
+ }
+ .jumbotron {
+   max-width: 30%;
+ }
+ .servicio {
+   max-width: 70%;
+   text-align: center
+
+ }

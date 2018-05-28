@@ -5,7 +5,7 @@ export default(function(req, res) {
     var email = req.body.email;
   var password = req.body.password;
   var query =
-    "SELECT * FROM Usuario WHERE Email ='" +
+    "SELECT * FROM Gimnasio WHERE Email ='" +
     email +
     "'  AND Contraseña ='" +
     password +
@@ -21,7 +21,7 @@ export default(function(req, res) {
       console.log("Result Login: ", JSON.stringify(results[0].Email));
       console.log(results[0].Nombre); 
       console.log(results[0].id);
-      res.redirect('/');
+      res.redirect('/panelEmpresa');
     } else {
       var results = {
         error: error
