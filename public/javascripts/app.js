@@ -46,9 +46,16 @@ var init = function() {
       localidad: $("#localidad_empresa").val(),
       password: $("#password_empresa").val()
     };
-    jQuery.post("/SignEmpresa", form_empresa, function(results) {
+    jQuery.post("/reg_empresa", form_empresa, function(results) {
       alert("Empresa Registrado");
-    });
+    }).done(function(results){
+      if(results.error === null){
+        location.href = ("/panelEmpresa")
+      } else {
+        $("#error").css("display", "block");
+
+      }
+    })
   });
 
 
@@ -133,4 +140,3 @@ function iniciarMapa() {
     map: map
   });
 }
-36.717810, -4.433715

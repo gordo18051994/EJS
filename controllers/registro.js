@@ -1,6 +1,6 @@
 import sql from 'msnodesqlv8';
 var config =
-  "server=A1010;Database=proyecto;Trusted_Connection=Yes;Driver={SQL Server Native Client 11.0}";
+  "server=DESKTOP-VFJDS7F;Database=proyecto;Trusted_Connection=Yes;Driver={SQL Server Native Client 11.0}";
   export default(function(req, res, next) {
     var form = {
       nombre: req.body.nombre,
@@ -46,6 +46,7 @@ var config =
         console.log(req.session.useremail);
         req.session.user = results.nombre;
         console.log("Result POST: ", results.email);
+        console.log(res)
         res.redirect("/");
       }
     });

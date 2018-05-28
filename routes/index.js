@@ -21,6 +21,7 @@ api.post("/Signup", controllers.registro);
 api.get("/SignEmpresa", function(req, res, next) {
   res.render("Sign_empresa")
 })
+api.post("/reg_empresa", controllers.reg_empresa);
 api.post("/SignEmpresa", controllers.login_empresa);
 api.get("/panelEmpresa", function(req, res, next) {
   res.render("panel_empresa");

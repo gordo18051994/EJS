@@ -1,6 +1,6 @@
 import sql from 'msnodesqlv8';
 var config =
-  "server=A1010;Database=proyecto;Trusted_Connection=Yes;Driver={SQL Server Native Client 11.0}";
+  "server=DESKTOP-VFJDS7F;Database=proyecto;Trusted_Connection=Yes;Driver={SQL Server Native Client 11.0}";
   export default(function(req, res, next) {
     var form_empresa = {
       nombre: req.body.nombre,
@@ -22,7 +22,10 @@ var config =
       if (error) {
         console.log(error);
         console.log(form_empresa.telefono);
-        res.redirect("/Empresa");
+        var results = {
+          error: error
+        }
+        res.send(results);
       } else {
         var results = {
           error: null,
