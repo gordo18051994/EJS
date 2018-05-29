@@ -14,9 +14,9 @@ var init = function() {
 			$('#servicios').
 				append($('<li class="Servicio" id="data_' + data[i].id + '">' + data[i].Nombre +'</li>'));
 		}
+  })
 
-		
-	} )
+  
 
   $("#registrar_usuario").on("click", function() {
     var d_form = {
