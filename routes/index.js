@@ -8,7 +8,8 @@ var config =
   "server=A1010;Database=proyecto;Trusted_Connection=Yes;Driver={SQL Server Native Client 11.0}";
 var api = Router();
 api.get("/", function(req, res, next) {
-  res.render("index");
+  var user = req.session.user
+  res.render("index", {user: user});
 });
 api.get("/Sign", function(req, res, next) {
   res.render("Sign");
