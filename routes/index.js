@@ -27,6 +27,8 @@ api.get("/panelEmpresa", function(req, res, next) {
   res.render("panel_empresa");
 })
 api.get("/Servicio", controllers.getServicios);
+api.post("/Servicio", controllers.precio);
+api.get("/Serv_precio", controllers.serv_precio);
 api.get("/Logout", function(req, res, next) {
   req.session.destroy(function(err) {});
   res.render("index");

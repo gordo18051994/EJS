@@ -8,17 +8,15 @@
                     <div class="jumbotron col-md-6">
                         <h3> Añadir Sevicio</h3>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="servicio" id="servicio" placeholder="Servicio" value="" required tabindex="2">
+                            <select type="text" class="form-control" name="servicio" id="servicio" placeholder="Servicio" required tabindex="2">
+                            <option>Elija un Servicio</option>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Describa el servicio" value="" required
-                                tabindex="2">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="precio" id="precio" placeholder="Precio" value="" required tabindex="2">
+                            <input type="text" class="form-control" name="precio" id="precio" placeholder="Precio" required tabindex="2">
                         </div>
                         <p>
-                            <a class="btn btn-register" href="#" role="button">Añadir &raquo;</a>
+                            <button id="registrar_servicio" class="btn btn-register" href="#" role="button">Añadir &raquo;</button>
                         </p>
                     </div>
                     <div class="col-md-4">

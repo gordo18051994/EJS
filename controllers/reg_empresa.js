@@ -1,6 +1,6 @@
 import sql from 'msnodesqlv8';
 var config =
-  "server=DESKTOP-VFJDS7F;Database=proyecto;Trusted_Connection=Yes;Driver={SQL Server Native Client 11.0}";
+  "server=A1010;Database=proyecto;Trusted_Connection=Yes;Driver={SQL Server Native Client 11.0}";
   export default(function(req, res, next) {
     var form_empresa = {
       nombre: req.body.nombre,
@@ -39,9 +39,9 @@ var config =
         };
         req.session.useremail = results.email;
         console.log(req.session.useremail);
-        req.session.user = results.nombre;
+        req.session.user = results.id;
         console.log("Result Gimnasio: ", results);
-        res.redirect("/");
+        res.send(results);
       }
     });
   })

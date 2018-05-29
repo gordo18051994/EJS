@@ -14,14 +14,18 @@ export default(function(req, res) {
   sql.query(config, query, function(error, results) {
     if (email === results[0].Email &&
       password === results[0].Contraseña) {
-        req.session.useremail = req.body.email;
+        req.session.user = results[0].Email;
+        req.session.userid = results[0].id;
       // req.session.userId = results[0].id;
       // req.session.user = results[0];
-      console.log(req.session.useremail)
+      console.log(req.session.user)
       console.log("Result Login: ", JSON.stringify(results[0].Email));
       console.log(results[0].Nombre); 
       console.log(results[0].id);
-      res.redirect('/panelEmpresa');
+      var results = {
+        error: null
+      };
+      res.send(results);
     } else {
       var results = {
         error: error

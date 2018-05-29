@@ -1,5 +1,4 @@
 var init = function() {
-
   // 	// $('#listaElementos').on('click','.tarea',function(evnt){
 
   // 	// 	jQuery.post( "api/tareas/borrar",{id:evnt.target.id.substring(6)} , function(tarea){
@@ -8,15 +7,40 @@ var init = function() {
   // 	// 	})
 
   // 	// })
-  
-  $.get( "/Servicio", function(data){
-		for(let i = 0; i < data.length; i++) {
-			$('#servicios').
-				append($('<li class="Servicio" id="data_' + data[i].id + '">' + data[i].Nombre +'</li>'));
-		}
+
+  $.get("/Servicio", function(data) {
+    for (let i = 0; i < data.length; i++) {
+      $("#servicio").append(
+        $(
+          '<option name="serv" value="' +
+            data[i].id +
+            '">' +
+            data[i].Nombre +
+            "</option>"
+        )
+      );
+    }
+  });
+
+  $.get("/Serv_precio", function (data) {
+    console.log(data)
+    for(let i = 0; i < data.length; i++){
+      $("#servicios").append('<li>' + data[i].Nombre_Servicio + '</li>')
+    
+    $("#precios").append('<li>' + data[i].PrecioServicio + '</li>')
+    }
   })
 
-  
+  $("#registrar_servicio").on("click", function(data) {
+    var precio = $("#precio").val();
+    var servicio = $("#servicio").val();
+    $.post("/Servicio", { servicio: servicio, precio: precio }, function(
+      results
+    ) {
+      alert("datos enviados");
+      location.href = "/panelEmpresa";
+    });
+  });
 
   $("#registrar_usuario").on("click", function() {
     var d_form = {
@@ -46,54 +70,52 @@ var init = function() {
       localidad: $("#localidad_empresa").val(),
       password: $("#password_empresa").val()
     };
-    jQuery.post("/reg_empresa", form_empresa, function(results) {
-      alert("Empresa Registrado");
-    }).done(function(results){
-      if(results.error === null){
-        location.href = ("/panelEmpresa")
-      } else {
-        $("#error").css("display", "block");
-
-      }
-    })
+    jQuery
+      .post("/reg_empresa", form_empresa, function(results) {
+        debugger;
+      })
+      .done(function(results) {
+        if (results.error === null) {
+          alert("Empresa Registrado");
+          location.href = "/panelEmpresa";
+        } else {
+          $("#error").css("display", "block");
+        }
+      });
   });
 
-
-  $("#Signin").on('click', function() {
+  $("#Signin").on("click", function() {
     var email = $("#email").val();
     var password = $("#password").val();
-    $.post("/Sign", {email: email, password: password}, function(){
+    $.post("/Sign", { email: email, password: password }, function() {
       alert("Logueado");
-    }).done(function(){
+    }).done(function() {
       $.get("/", function() {
         alert("pagina principal");
-        location.href = ("/")
-      })
-    })
-  })
+        location.href = "/";
+      });
+    });
+  });
 
-  $("#SigninEmpresa").on('click', function() {
+  $("#SigninEmpresa").on("click", function() {
     var email = $("#email").val();
     var password = $("#password").val();
-    $.post("/SignEmpresa", {email: email, password: password}, function(){
+    $.post("/SignEmpresa", { email: email, password: password }, function() {
       alert("Empresa Logueada");
-    }).done(function(){
+    }).done(function() {
       $.get("/", function() {
         alert("pagina principal Empresa");
-        location.href = ("/panelEmpresa")
-      })
-    })
-  })
-  
+        location.href = "/panelEmpresa";
+      });
+    });
+  });
 
-  $("#Logout").on('click', function() {
-    $.get("/Logout", function(){
+  $("#Logout").on("click", function() {
+    $.get("/Logout", function() {
       alert("LogOut con Éxito");
       // location.href("/");
-
-    })
-  })
-
+    });
+  });
 
   // 	// jQuery.post( "api/tareas/crear",{nombre:$("#newTarea").val()} , function(tarea){
 
@@ -105,33 +127,33 @@ var init = function() {
 
   // })
 
-
   $(function() {
-
-    $('#login-form-link').click(function(e) {
-		$("#login-form").delay(100).fadeIn(100);
- 		$("#register-form").fadeOut(100);
-		$('#register-form-link').removeClass('active');
-		$(this).addClass('active');
-		e.preventDefault();
-	});
-	$('#register-form-link').click(function(e) {
-		$("#register-form").delay(100).fadeIn(100);
- 		$("#login-form").fadeOut(100);
-		$('#login-form-link').removeClass('active');
-		$(this).addClass('active');
-		e.preventDefault();
-	});
-
-});
-
+    $("#login-form-link").click(function(e) {
+      $("#login-form")
+        .delay(100)
+        .fadeIn(100);
+      $("#register-form").fadeOut(100);
+      $("#register-form-link").removeClass("active");
+      $(this).addClass("active");
+      e.preventDefault();
+    });
+    $("#register-form-link").click(function(e) {
+      $("#register-form")
+        .delay(100)
+        .fadeIn(100);
+      $("#login-form").fadeOut(100);
+      $("#login-form-link").removeClass("active");
+      $(this).addClass("active");
+      e.preventDefault();
+    });
+  });
 };
 
 $().ready(init);
 
 function iniciarMapa() {
-  var uluru = {lat: 36.717810, lng: -4.433715};
-  var map = new google.maps.Map(document.getElementById('map'), {
+  var uluru = { lat: 36.71781, lng: -4.433715 };
+  var map = new google.maps.Map(document.getElementById("map"), {
     zoom: 18,
     center: uluru
   });
