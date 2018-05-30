@@ -45,15 +45,25 @@ var init = function() {
    
       
         for(let i = 0; i < data.length; i++) {
-          if(data[0].Nombre_Gimnasio === data[i].Nombre_Gimnasio){
-            debugger
-            // $("#Gimnasios").append('<div class="row"> <div class="col-lg-4"> <div class="row"> <h2 class="ng"></h2> <div class="col-lg-6"> <h3>Servicios</h3><ul id="ser"></ul></div><div class="col-lg-6"><h3>Precios</h3><ul id="pre"></ul></div></div><p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p></div>')
-            $(".ng").append(data[0].Nombre_Gimnasio);  
+          if(data[i].Nombre_Gimnasio === $("#sng").text()){
             $("#ser").append('<li id="' + data[i].id_ser + '">' + data[i].Nombre_Servicio + '</li>');
             $("#pre").append('<li>' + data[i].Precio_Servicio + '</li>')
+          } 
+        }
+
+        for(let i = 0; i < data.length; i++) {
+          if(data[i].Nombre_Gimnasio === $("#rcg").text()) {
+            $("#ser_rcg").append('<li id="' + data[i].id_ser + '">' + data[i].Nombre_Servicio + '</li>');
+            $("#pre_rcg").append('<li>' + data[i].Precio_Servicio + '</li>')
           }
-          
-    }
+        }
+        for(let i = 0; i < data.length; i++) {
+          if(data[i].Nombre_Gimnasio === $("#atn").text()) {
+            $("#ser_atn").append('<li id="' + data[i].id_ser + '">' + data[i].Nombre_Servicio + '</li>');
+            $("#pre_atn").append('<li>' + data[i].Precio_Servicio + '</li>')
+          }
+        }
+
 
   })
 
