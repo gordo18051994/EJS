@@ -6,6 +6,7 @@ import reg_empresa from './reg_empresa';
 import precio from './precio';
 import serv_precio from './serv_precio';
 import serv_index from './serv_index';
+import inscripcion from './incripcion';
 
 exports.login = login;
 exports.registro = registro;
@@ -15,3 +16,4 @@ exports.reg_empresa = reg_empresa;
 exports.precio = precio;
 exports.serv_precio = serv_precio;
 exports.serv_index = serv_index;
+exports.inscripcion = inscripcion;

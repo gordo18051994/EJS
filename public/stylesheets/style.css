@@ -185,12 +185,14 @@ border-color: #1CA347;
  #Gimnasios {
    max-width: 75%;
    margin-left: 15%;
+
  }
 
  .hg {
    margin-left: 40%
  }
 
- #sng {
-   margin-left: 130px
+.row h2{
+   margin-left: 25%
  }
+ 

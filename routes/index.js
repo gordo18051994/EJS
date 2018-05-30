@@ -34,6 +34,7 @@ api.get("/Servicio", controllers.getServicios);
 api.post("/Servicio", controllers.precio);
 api.get("/Serv_precio", controllers.serv_precio);
 api.get("/Servicio/index", controllers.serv_index);
+api.get("/inscripcion", controllers.inscripcion);
 api.get("/Logout", function(req, res, next) {
   req.session.destroy(function(err) {});
   res.render("index", {role: null});
