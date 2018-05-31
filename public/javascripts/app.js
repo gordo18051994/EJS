@@ -22,13 +22,13 @@ var init = function() {
     }
   });
 
-  $.get("/Serv_precio", function (data) {
-    for(let i = 0; i < data.length; i++){
-      $("#servicios").append('<li>' + data[i].Nombre_Servicio + '</li>')
-    
-    $("#precios").append('<li>' + data[i].PrecioServicio + '</li>')
+  $.get("/Serv_precio", function(data) {
+    for (let i = 0; i < data.length; i++) {
+      $("#servicios").append("<li>" + data[i].Nombre_Servicio + "</li>");
+
+      $("#precios").append("<li>" + data[i].PrecioServicio + "</li>");
     }
-  })
+  });
 
   $("#registrar_servicio").on("click", function(data) {
     var precio = $("#precio").val();
@@ -41,31 +41,49 @@ var init = function() {
     });
   });
 
-  $.get("/Servicio/index", function (data) {
-   
-      
-        for(let i = 0; i < data.length; i++) {
-          if(data[i].Nombre_Gimnasio === $("#sng").text()){
-            $("#ser").append('<li id="' + data[i].id_ser + '">' + data[i].Nombre_Servicio + '</li>');
-            $("#pre").append('<li>' + data[i].Precio_Servicio + '</li>')
-          } 
-        }
+  $.get("/getGimnasios", function(data) {
+    for (let i = 0; i < data.length; i++) {
+      $("#getgym").append(
+        '<div class="col-lg-4"><div class="row"><h2 id="' +
+          data[i].Nombre +
+          '">' +
+          data[i].Nombre +
+          '</h2><div class="col-lg-6"><h3>Servicios</h3><ul id="ser_' +
+          data[i].Nombre +
+          '">' +
+          '</ul></div><div class="col-lg-6"><h3>Precios</h3><ul id="pre_' +
+          data[i].Nombre +
+          '"></ul></div></div><button type="button" class="traer" id="bt' +
+          data[i].Nombre +
+          '" href="" >View details &raquo;</button></div>'
+      );
+    }
+  });
 
-        for(let i = 0; i < data.length; i++) {
-          if(data[i].Nombre_Gimnasio === $("#rcg").text()) {
-            $("#ser_rcg").append('<li id="' + data[i].id_ser + '">' + data[i].Nombre_Servicio + '</li>');
-            $("#pre_rcg").append('<li>' + data[i].Precio_Servicio + '</li>')
-          }
+  $.get("/Servicio/index", function(data) {
+    var h2 = $("h2");
+    for (let j = 0; j < h2.length; j++) {
+      for (let i = 0; i < data.gymserv.length; i++) {
+        if (data.gymserv[i].Nombre_Gimnasio == h2.eq(j).attr("id")) {
+          $("#ser_" + data.gymserv[i].Nombre_Gimnasio + "").append(
+            '<li id="' +
+              data.gymserv[i].id_ser +
+              '">' +
+              data.gymserv[i].Nombre_Servicio +
+              "</li>"
+          );
+          $("#pre_" + data.gymserv[i].Nombre_Gimnasio + "").append(
+            "<li>" + data.gymserv[i].Precio_Servicio + "</li>"
+          );
         }
-        for(let i = 0; i < data.length; i++) {
-          if(data[i].Nombre_Gimnasio === $("#atn").text()) {
-            $("#ser_atn").append('<li id="' + data[i].id_ser + '">' + data[i].Nombre_Servicio + '</li>');
-            $("#pre_atn").append('<li>' + data[i].Precio_Servicio + '</li>')
-          }
-        }
+      }
+    }
+  });
 
-
-  })
+  $(".traer").on("click", function() {
+    // let id = $(this).attr("id")
+    alert("que pasa");
+  });
 
   $("#registrar_usuario").on("click", function() {
     var d_form = {
@@ -90,7 +108,7 @@ var init = function() {
         $("#error").css("display", "block");
       }
     });
-    });
+  });
 
   $("#registrar_empresa").on("click", function() {
     var form_empresa = {
@@ -103,8 +121,7 @@ var init = function() {
       password: $("#password_empresa").val()
     };
     jQuery
-      .post("/reg_empresa", form_empresa, function(results) {
-      })
+      .post("/reg_empresa", form_empresa, function(results) {})
       .done(function(results) {
         if (results.error === null) {
           alert("Empresa Registrado");
@@ -181,15 +198,16 @@ var init = function() {
 };
 
 $().ready(init);
+console.log($("#getgym.col-lg-4"))
 
-function iniciarMapa() {
-  var uluru = { lat: 36.71781, lng: -4.433715 };
-  var map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 18,
-    center: uluru
-  });
-  var marker = new google.maps.Marker({
-    position: uluru,
-    map: map
-  });
-}
+// function iniciarMapa() {
+//   var uluru = { lat: 36.71781, lng: -4.433715 };
+//   var map = new google.maps.Map(document.getElementById("map"), {
+//     zoom: 18,
+//     center: uluru
+//   });
+//   var marker = new google.maps.Marker({
+//     position: uluru,
+//     map: map
+//   });
+// }

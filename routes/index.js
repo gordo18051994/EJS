@@ -34,7 +34,14 @@ api.get("/Servicio", controllers.getServicios);
 api.post("/Servicio", controllers.precio);
 api.get("/Serv_precio", controllers.serv_precio);
 api.get("/Servicio/index", controllers.serv_index);
-api.get("/inscripcion", controllers.inscripcion);
+api.get("/Inscripcion",function(req, res, next) {
+  var role = req.session.role
+  var user = req.session.user
+  res.render("Inscripcion", {role: role, user: user})
+});
+api.get("/getGimnasios", controllers.getGimnasios);
+// api.post("/traerGym", controllers.traerGym);
+api.post("/Inscripcion", controllers.inscripcion);
 api.get("/Logout", function(req, res, next) {
   req.session.destroy(function(err) {});
   res.render("index", {role: null});

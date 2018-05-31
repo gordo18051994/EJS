@@ -1,6 +1,6 @@
 import sql from 'msnodesqlv8';
 var config =
-  "server=DESKTOP-VFJDS7F;Database=proyecto;Trusted_Connection=Yes;Driver={SQL Server Native Client 11.0}";
+  "server=A1010;Database=proyecto;Trusted_Connection=Yes;Driver={SQL Server Native Client 11.0}";
   import session from 'express-session'
   
 export default(function(req, res) {
@@ -29,7 +29,7 @@ export default(function(req, res) {
       var results = {
         error: null,
         user: req.session.user,
-        userid: req.session.userid,
+        userid: req.session.user.id,
         role: req.session.role
       };
       console.log(results)

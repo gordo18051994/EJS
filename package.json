@@ -15,6 +15,7 @@
     "ejs": "^2.6.1",
     "express": "~4.16.0",
     "express-session": "^1.15.6",
+    "moment": "^2.22.1",
     "msnodesqlv8": "^0.6.6",
     "nodemon": "^1.17.4"
   }
