@@ -53,26 +53,27 @@ var init = function() {
           '">' +
           '</ul></div><div class="col-lg-6"><h3>Precios</h3><ul id="pre_' +
           data[i].Nombre +
-          '"></ul></div></div><button type="button" class="traer" id="bt' +
+          '"></ul></div></div><button type="button" href="/Sign" class="traer" id="bt' +
           data[i].Nombre +
-          '" href="" >View details &raquo;</button></div>'
+          '">View details &raquo;</button></div>'
       );
     }
   });
+  
 
   $.get("/Servicio/index", function(data) {
     var h2 = $("h2");
     for (let j = 0; j < h2.length; j++) {
       for (let i = 0; i < data.gymserv.length; i++) {
         if (data.gymserv[i].Nombre_Gimnasio == h2.eq(j).attr("id")) {
-          $("#ser_" + data.gymserv[i].Nombre_Gimnasio + "").append(
+          $('#ser_' + data.gymserv[i].Nombre_Gimnasio).append(
             '<li id="' +
               data.gymserv[i].id_ser +
               '">' +
               data.gymserv[i].Nombre_Servicio +
-              "</li>"
+              '</li>'
           );
-          $("#pre_" + data.gymserv[i].Nombre_Gimnasio + "").append(
+          $('#pre_' + data.gymserv[i].Nombre_Gimnasio).append(
             "<li>" + data.gymserv[i].Precio_Servicio + "</li>"
           );
         }
@@ -80,10 +81,6 @@ var init = function() {
     }
   });
 
-  $(".traer").on("click", function() {
-    // let id = $(this).attr("id")
-    alert("que pasa");
-  });
 
   $("#registrar_usuario").on("click", function() {
     var d_form = {
@@ -125,7 +122,7 @@ var init = function() {
       .done(function(results) {
         if (results.error === null) {
           alert("Empresa Registrado");
-          location.href = "/SignEmpresa";
+          location.href = "/panelEmpresa";
         } else {
           $("#error").css("display", "block");
         }
@@ -198,7 +195,10 @@ var init = function() {
 };
 
 $().ready(init);
-console.log($("#getgym.col-lg-4"))
+
+$("#btSynergym").on('click', function() {
+  alert("Funciona")
+})
 
 // function iniciarMapa() {
 //   var uluru = { lat: 36.71781, lng: -4.433715 };

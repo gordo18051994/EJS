@@ -1,27 +1,27 @@
+<!DOCTYPE HTML>
+
 <html>
 <% include templates/head %>
-  <% if (!role) { %>
-    <% include templates/header%>
-      <% } else if(role==="Empresa"){ %>
-        <% include templates/header_Empresa%>
-          <% } else { %>
-            <% include templates/header_Usuario%>
-              <% } %>
 
-                <body>
-                  <div class="hg">
-                    <h1>Gimnasios Actuales</h1>
-                  </div>
-                  <div id="Gimnasios">
-                    <div class="row" id="getgym">
-                      
-                    </div>
-                  </div>
-                  
 
-                </body>
+<body>
 
-                <% include templates/footer %>
+	<!-- Wrapper -->
+	<div id="wrapper">
+		
+		
+		<!-- Main -->
+		<% include templates/main %>
+		<% include templates/menu %>
+
+		<!-- Sidebar -->
+		<% include templates/footer%>
+
+	</div>
+
+	<!-- Scripts -->
+	
+
+</body>
 
 </html>
-
