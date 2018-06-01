@@ -7,6 +7,10 @@ import controllers from '../controllers/'
 var config =
   "server=A1010;Database=proyecto;Trusted_Connection=Yes;Driver={SQL Server Native Client 11.0}";
 var api = Router();
+function pepito () {api.get("/Inscripcion", function(req, res, next) {
+  render("Inscripcion")
+})}
+
 api.get("/", function(req, res, next) {
   var role = req.session.role
   var user = req.session.user
@@ -39,6 +43,11 @@ api.get("/Inscripcion",function(req, res, next) {
   var user = req.session.user
   res.render("Inscripcion", {role: role, user: user})
 });
+api.get("/funciona", function(req, res, next) {
+  var role = req.session.role
+  var user = req.session.user
+  render("Incripcion", {role:role, user:user})
+})
 api.get("/getGimnasios", controllers.getGimnasios);
 // api.post("/traerGym", controllers.traerGym);
 api.post("/Inscripcion", controllers.inscripcion);

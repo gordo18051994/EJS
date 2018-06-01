@@ -53,9 +53,9 @@ var init = function() {
           '">' +
           '</ul></div><div class="col-lg-6"><h3>Precios</h3><ul id="pre_' +
           data[i].Nombre +
-          '"></ul></div></div><button type="button" href="/Sign" class="traer" id="bt' +
+          '"></ul></div></div><button type="button"name="' + data[i].Nombre +'" class="traer" id="bt' +
           data[i].Nombre +
-          '">View details &raquo;</button></div>'
+          '">' + 'View details &raquo;</button></div>'
       );
     }
   });
@@ -79,7 +79,24 @@ var init = function() {
         }
       }
     }
-  });
+  })
+
+    setTimeout(()=>{$(".traer").on('click', function() {
+      var name = $(this).attr("name")
+      
+      $.post("/Inscripcion", {name: name}, function(data) {
+        $(".gym").append('<li>' + data[0].N_gym + '</li>');
+     
+        for(let i = 0; i < data[i].length; i++){
+          debugger
+          $("#ser").append('<li>' + data[i].S_gym + '</li>');
+          $("#pre").append('<li>' + data[i].precio + '</li>');
+    }})
+      })
+      }, 40)
+
+    
+  
 
 
   $("#registrar_usuario").on("click", function() {
@@ -196,9 +213,7 @@ var init = function() {
 
 $().ready(init);
 
-$("#btSynergym").on('click', function() {
-  alert("Funciona")
-})
+
 
 // function iniciarMapa() {
 //   var uluru = { lat: 36.71781, lng: -4.433715 };
