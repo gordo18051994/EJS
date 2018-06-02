@@ -19,6 +19,9 @@ api.get("/", function(req, res, next) {
 api.get("/Sign", function(req, res, next) {
   res.render("Sign");
 });
+api.get("/gimnasios", function(req, res, next) {
+  res.render("gimnasios");
+})
 api.get("/SignUp", function(req, res, next) {
   res.render("Sign");
 });
@@ -38,6 +41,7 @@ api.get("/Servicio", controllers.getServicios);
 api.post("/Servicio", controllers.precio);
 api.get("/Serv_precio", controllers.serv_precio);
 api.get("/Servicio/index", controllers.serv_index);
+api.post("/borrar_serv", controllers.borrar_serv);
 api.get("/Inscripcion",function(req, res, next) {
   var role = req.session.role
   var user = req.session.user
@@ -51,6 +55,9 @@ api.get("/funciona", function(req, res, next) {
 api.get("/getGimnasios", controllers.getGimnasios);
 // api.post("/traerGym", controllers.traerGym);
 api.post("/Inscripcion", controllers.inscripcion);
+api.get("/contacto", function(req, res, next) {
+  res.render("contacto");
+})
 api.get("/Logout", function(req, res, next) {
   req.session.destroy(function(err) {});
   res.render("index", {role: null});

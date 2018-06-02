@@ -8,7 +8,7 @@ import serv_precio from './serv_precio';
 import serv_index from './serv_index';
 import inscripcion from './inscripcion';
 import getGimnasios from './getGimnasios';
-import traerGym from './traerGym'
+import borrar_serv from './borrar_serv';
 
 exports.login = login;
 exports.registro = registro;
@@ -20,4 +20,4 @@ exports.serv_precio = serv_precio;
 exports.serv_index = serv_index;
 exports.inscripcion = inscripcion;
 exports.getGimnasios = getGimnasios;
-exports.traerGym = traerGym
+exports.borrar_serv = borrar_serv

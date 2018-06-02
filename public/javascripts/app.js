@@ -1,12 +1,16 @@
 var init = function() {
-  // 	// $('#listaElementos').on('click','.tarea',function(evnt){
+  	$('#acciones').on('click','',function(evnt){
+      console.log(evnt)
 
-  // 	// 	jQuery.post( "api/tareas/borrar",{id:evnt.target.id.substring(6)} , function(tarea){
 
-  // 	// 			$(evnt.target).remove();
-  // 	// 	})
+  		$.post("/borrar_serv",{id:evnt.target.id.substring(3,5)} , function(){
 
-  // 	// })
+          $(evnt.target).remove();
+          alert("Servicio borrado")
+          location.reload()
+  		})
+
+  	})
 
   $.get("/Servicio", function(data) {
     for (let i = 0; i < data.length; i++) {
@@ -24,9 +28,13 @@ var init = function() {
 
   $.get("/Serv_precio", function(data) {
     for (let i = 0; i < data.length; i++) {
-      $("#servicios").append("<li>" + data[i].Nombre_Servicio + "</li>");
+      debugger
+      $("#servicios").append("<label>" + data[i].Nombre_Servicio + "</label><br>");
 
-      $("#precios").append("<li>" + data[i].PrecioServicio + "</li>");
+      $("#precios").append("<label>" + data[i].PrecioServicio + "</label><br>");
+
+      $("#acciones").append('<button type="button" id=up"'+ data[i].id +'" class="edit' + data[i].Nombre_Gimnasio + '" class="btn btn-primary">Editar</button>' + 
+      '<button type="button" id"del'+ data[i].id +'" class="borrar' + data[i].Nombre_Gimnasio + '" class="btn btn-danger">Borrar</button><br>')
     }
   });
 
@@ -81,19 +89,24 @@ var init = function() {
     }
   })
 
-    setTimeout(()=>{$(".traer").on('click', function() {
-      var name = $(this).attr("name")
-      
-      $.post("/Inscripcion", {name: name}, function(data) {
-        $(".gym").append('<li>' + data[0].N_gym + '</li>');
-     
-        for(let i = 0; i < data[i].length; i++){
-          debugger
-          $("#ser").append('<li>' + data[i].S_gym + '</li>');
-          $("#pre").append('<li>' + data[i].precio + '</li>');
-    }})
-      })
-      }, 40)
+    setTimeout(()=>{
+      $(".traer").on('click', function() {
+      location.href = "/Inscripcion"})
+    }, 20)
+
+      var name = $("#gym").text()
+        $.post("/Inscripcion", {name: name}, function(data) {
+        
+        
+          for(let i = 0; i < data[i].length; i++){
+            
+            if(data[i].N_gym = name){
+            
+            $("#ser").append('<li>' + data[i].S_gym + '</li>');
+            $("#pre").append('<li>' + data[i].precio + '</li>');
+            }
+          }
+        })
 
     
   

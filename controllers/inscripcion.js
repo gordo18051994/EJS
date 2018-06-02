@@ -1,7 +1,6 @@
 import sql from 'msnodesqlv8';
 var config =
-  "server=A1010;Database=proyecto;Trusted_Connection=Yes;Driver={SQL Server Native Client 11.0}";
-  import localStorage from 'localStorage'
+  "server=DESKTOP-VFJDS7F;Database=proyecto;Trusted_Connection=Yes;Driver={SQL Server Native Client 11.0}";
 
   export default (function(req, res, next) {
       var name = req.body.name
@@ -23,7 +22,7 @@ var config =
             res.send(results)
         } else {
             
-            console.log("usuario registra servicio")
+            // console.log("usuario registra servicio")
             res.send(results)
         }
       })
