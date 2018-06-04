@@ -34,16 +34,47 @@
                                     <span id="precios"></span>
                                 </div>
                                 
+                                
                                 <div class="col-lg-4" >
                                     <h1>Acciones</h1>
                                     <span id="acciones">
                                             
                                     </span>
                                 </div>
+                                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                          <h4 class="modal-title" id="myModalLabel">Borrar servicio</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                          <div class="row">
+                                              <div class="col-md-6" id="upd_serv">
+                                                  <h3>Servicio</h3>
+                                              </div>
+                                              <div class="col-md-6">
+                                                  <input type="text" id="cambiar_precio" placeholder="Intoduzca el precio deseado">
+                                              </div>
+                                          </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                          <button type="button" class="btn btn-primary" id="guardar_cambios">Guardar cambios</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>
+            <div id="floating-panel">
+                <input id="address" type="textbox" value="Sydney, NSW">
+                <input id="submit" type="button" value="Geocode">
+              </div>
             <div id="map"></div>
+            <script>localStorage.setItem("Suprimo", "surmano")</script>
         </main>
         <% include templates/footer %>

@@ -20,7 +20,9 @@ api.get("/Sign", function(req, res, next) {
   res.render("Sign");
 });
 api.get("/gimnasios", function(req, res, next) {
-  res.render("gimnasios");
+  var role = req.session.role
+  var user = req.session.user
+  res.render("gimnasios", {role: role, user: user});
 })
 api.get("/SignUp", function(req, res, next) {
   res.render("Sign");
@@ -42,20 +44,20 @@ api.post("/Servicio", controllers.precio);
 api.get("/Serv_precio", controllers.serv_precio);
 api.get("/Servicio/index", controllers.serv_index);
 api.post("/borrar_serv", controllers.borrar_serv);
-api.get("/Inscripcion",function(req, res, next) {
+api.post("/upd_serv", controllers.upd_serv);
+api.get("/Inscripcion", function(req, res, next) {
   var role = req.session.role
   var user = req.session.user
   res.render("Inscripcion", {role: role, user: user})
-});
-api.get("/funciona", function(req, res, next) {
-  var role = req.session.role
-  var user = req.session.user
-  render("Incripcion", {role:role, user:user})
 })
+api.post("/Inscripcion", controllers.inscripcion);
 api.get("/getGimnasios", controllers.getGimnasios);
 // api.post("/traerGym", controllers.traerGym);
-api.post("/Inscripcion", controllers.inscripcion);
+// api.post("/Inscripcion", , function(req, res, next) {
+//   res.render("Inscripcion")
+// });
 api.get("/contacto", function(req, res, next) {
+  
   res.render("contacto");
 })
 api.get("/Logout", function(req, res, next) {

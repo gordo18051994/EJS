@@ -1,12 +1,28 @@
 var init = function() {
-  	$('#acciones').on('click','',function(evnt){
-      console.log(evnt)
-
-
-  		$.post("/borrar_serv",{id:evnt.target.id.substring(3,5)} , function(){
-
+  	$('#acciones').on('click','.borrar',function(evnt){
+  
+  		$.post("/borrar_serv",{id:evnt.target.id.substring(3)} , function(){
           $(evnt.target).remove();
           alert("Servicio borrado")
+          location.reload()
+      })
+    })
+
+      $('#acciones').on('click','.edit',function(){
+        var servicio = $(this).attr("data")
+        var id_serv = $(this).attr("id");
+        console.log(id_serv)
+        
+        $("#upd_serv").append('<span class="Servicio "id="' + id_serv.substring(2) + '">' + servicio + '</span>')
+    })
+
+    $('#guardar_cambios').on('click',function(){
+      var precio = $("#cambiar_precio").val();
+      var id = $(".Servicio").attr("id")
+      
+      
+  		$.post("/upd_serv",{precio: precio, id: id} , function(){
+          alert("Servicio actualizado")
           location.reload()
   		})
 
@@ -28,13 +44,12 @@ var init = function() {
 
   $.get("/Serv_precio", function(data) {
     for (let i = 0; i < data.length; i++) {
-      debugger
-      $("#servicios").append("<label>" + data[i].Nombre_Servicio + "</label><br>");
+      $("#servicios").append('<label id="' + data[i].id_serv + '">' + data[i].Nombre_Servicio + '</label><br>');
 
-      $("#precios").append("<label>" + data[i].PrecioServicio + "</label><br>");
+      $("#precios").append("<span>" + data[i].PrecioServicio + "</span><br>");
 
-      $("#acciones").append('<button type="button" id=up"'+ data[i].id +'" class="edit' + data[i].Nombre_Gimnasio + '" class="btn btn-primary">Editar</button>' + 
-      '<button type="button" id"del'+ data[i].id +'" class="borrar' + data[i].Nombre_Gimnasio + '" class="btn btn-danger">Borrar</button><br>')
+      $("#acciones").append('<button type="button" data-toggle="modal" data-target="#myModal" data="' + data[i].Nombre_Servicio +'" id="up'+ data[i].id +'" class=" edit btn btn-primary">Editar</button>' + 
+      '<button type="button" id="del'+ data[i].id +'" class=" borrar btn btn-danger">Borrar</button><br>')
     }
   });
 
@@ -61,7 +76,7 @@ var init = function() {
           '">' +
           '</ul></div><div class="col-lg-6"><h3>Precios</h3><ul id="pre_' +
           data[i].Nombre +
-          '"></ul></div></div><button type="button"name="' + data[i].Nombre +'" class="traer" id="bt' +
+          '"></ul></div></div><button type="button" name="' + data[i].Nombre +'" class="traer" id="bt' +
           data[i].Nombre +
           '">' + 'View details &raquo;</button></div>'
       );
@@ -91,22 +106,42 @@ var init = function() {
 
     setTimeout(()=>{
       $(".traer").on('click', function() {
-      location.href = "/Inscripcion"})
+        var nombre = $(this).attr("name");
+        localStorage.setItem("Nombre_Gym", nombre)
+        location.href = "/Inscripcion"
+      })
     }, 20)
-
-      var name = $("#gym").text()
-        $.post("/Inscripcion", {name: name}, function(data) {
-        
-        
-          for(let i = 0; i < data[i].length; i++){
-            
-            if(data[i].N_gym = name){
+        var nombre = localStorage.Nombre_Gym
+        console.log(nombre)
+        $.post("/Inscripcion", {nombre: nombre}, function(data){
+          for(let i = 0; i < data.length; i++){
+            if(data[i].N_gym = nombre){
             
             $("#ser").append('<li>' + data[i].S_gym + '</li>');
             $("#pre").append('<li>' + data[i].precio + '</li>');
             }
           }
         })
+    
+    
+    
+  
+
+    $.get()
+
+      // var name = $("#gym").text()
+      //   $.post("/Inscripcion", {name: name}, function(data) {
+        
+        
+      //     for(let i = 0; i < data[i].length; i++){
+            
+      //       if(data[i].N_gym = name){
+            
+      //       $("#ser").append('<li>' + data[i].S_gym + '</li>');
+      //       $("#pre").append('<li>' + data[i].precio + '</li>');
+      //       }
+      //     }
+      //   })
 
     
   
@@ -228,14 +263,29 @@ $().ready(init);
 
 
 
-// function iniciarMapa() {
-//   var uluru = { lat: 36.71781, lng: -4.433715 };
-//   var map = new google.maps.Map(document.getElementById("map"), {
-//     zoom: 18,
-//     center: uluru
-//   });
-//   var marker = new google.maps.Marker({
-//     position: uluru,
-//     map: map
-//   });
-// }
+function iniciarMapa() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 8,
+    center: {lat: -34.397, lng: 150.644}
+  });
+  var geocoder = new google.maps.Geocoder();
+
+  document.getElementById('submit').addEventListener('click', function() {
+    geocodeAddress(geocoder, map);
+  });
+}
+
+function geocodeAddress(geocoder, resultsMap) {
+  var address = document.getElementById('address').value;
+  geocoder.geocode({'address': address + "España"}, function(results, status) {
+    if (status === 'OK') {
+      resultsMap.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+        map: resultsMap,
+        position: results[0].geometry.location
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}

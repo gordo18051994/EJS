@@ -1,9 +1,11 @@
 import sql from 'msnodesqlv8';
+import localStorage from 'localStorage'
 var config =
-  "server=DESKTOP-VFJDS7F;Database=proyecto;Trusted_Connection=Yes;Driver={SQL Server Native Client 11.0}";
+  "server=A1010;Database=proyecto;Trusted_Connection=Yes;Driver={SQL Server Native Client 11.0}";
 
   export default (function(req, res, next) {
-      var name = req.body.name
+    var name = req.body.nombre
+    console.log(name)
       var query = `SELECT p.id
       ,g.Nombre AS N_gym
       ,s.Nombre AS S_gym
@@ -20,10 +22,13 @@ var config =
                 error: error
             }
             res.send(results)
+            localStorage.setItem("nombre", "diego")
         } else {
             
             // console.log("usuario registra servicio")
             res.send(results)
+            
+            
         }
       })
   })
