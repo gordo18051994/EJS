@@ -122,27 +122,56 @@ var init = function() {
           }
         })
         
-        var servicios =[]
+        // var servicios =[]
         $("#Selec_serv").on('click', function() {
           var servicio = $("option:selected").text()
           console.log(servicio)
           $.post("/Inscripcion/servicio", {servicio: servicio, nombre: nombre}, function(data){
-          if($("#ser").append('<li>' + data[0].S_gym + '</li>')){
-            servicios = $("#ser li");
-            console.log(servicios)
+          if($("#ser").append('<li data-id="' + data[0].id_tabla + '" class="esteServicio">' + data[0].S_gym + '</li>')){
+            // servicios = $("#ser li");
+            // console.log(servicios)
           }
             
             $("#pre").append('<li>' + data[0].precio + '</li>')
           })
           $("option:selected").remove()
         })
-        console.log("aqui", servicios)
+        // console.log("aqui", servicios)
 
           
         $("#inscribir").on('click', function() {
-          for(let i = 0; i < servicios.length; i++) {
+          var serviciosjuan = []
+          $(".esteServicio").each(function( index ) {
+
+            var servicio_id = $(this).data('id');
+
+            serviciosjuan[index] = servicio_id
+
+        });
+
+        var parametros = {
+            "id_servicios":serviciosjuan
+        };
+          console.log(parametros)
+        //petición ajax
+        $.ajax({
+            url: "/FinalizarInscripcion",
+            method: "post",
+            data:parametros,
+            success: function(data) {
+              /* $(contenedor).html(data.notificaciones);
+               $("#intervalo-" + id_webcam).html(data.intervalos);*/
+               alert("OK");
+            },
+
+        }).done(function( data ) {
+
+        });
+          var elementos = $(".esteServicio");
+          
+          // for(let i = 0; i < servicios.length; i++) {
             
-          } 
+          // } 
         })
     
     
@@ -296,6 +325,7 @@ function iniciarMapa() {
 
 function geocodeAddress(geocoder, resultsMap) {
   var address = document.getElementById('address').value;
+  resultsMap
   geocoder.geocode({'address': address + "España"}, function(results, status) {
     if (status === 'OK') {
       resultsMap.setCenter(results[0].geometry.location);
@@ -303,6 +333,7 @@ function geocodeAddress(geocoder, resultsMap) {
         map: resultsMap,
         position: results[0].geometry.location
       });
+
     } else {
       alert('Geocode was not successful for the following reason: ' + status);
     }

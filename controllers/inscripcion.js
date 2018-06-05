@@ -1,12 +1,11 @@
 import sql from 'msnodesqlv8';
-import localStorage from 'localStorage'
 var config =
-  "server=A1010;Database=proyecto;Trusted_Connection=Yes;Driver={SQL Server Native Client 11.0}";
+  "server=DESKTOP-VFJDS7F;Database=proyecto;Trusted_Connection=Yes;Driver={SQL Server Native Client 11.0}";
 
   export default (function(req, res, next) {
     var name = req.body.nombre
     console.log(name)
-      var query = `SELECT p.id
+      var query = `SELECT p.id AS id_tabla
       ,s.id AS id_serv
       ,g.Nombre AS N_gym
       ,s.Nombre AS S_gym

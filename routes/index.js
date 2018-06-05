@@ -54,6 +54,7 @@ api.get("/Inscripcion", function(req, res, next) {
 api.post("/Inscripcion/servicio", controllers.precio_servicio)
 api.post("/Inscripcion", controllers.inscripcion);
 api.get("/getGimnasios", controllers.getGimnasios);
+api.post("/FinalizarInscripcion", controllers.finalizarInscripcion)
 // api.post("/traerGym", controllers.traerGym);
 // api.post("/Inscripcion", , function(req, res, next) {
 //   res.render("Inscripcion")

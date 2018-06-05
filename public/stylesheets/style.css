@@ -1,5 +1,4 @@
 body {
-  padding: 50px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 20px;
   /* background-image: url('/images/pita-pit-gym-600-91035.jpg');
@@ -15,16 +14,19 @@ body {
   background: linear-gradient(to right, rgba(209,209,209,1) 0%, rgba(219,219,219,1) 0%, rgba(254,254,254,1) 50%, rgba(226,226,226,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1d1d1', endColorstr='#e2e2e2', GradientType=1 );
 }
-
+.navbar {
+  border-radius: 0px;
+  margin-bottom: 0px;
+}
 a {
   color: #00B7FF;
 }
 .descripcion {
-  margin-top: 100px;
-  font-size: 35px;
+  margin-top: 50px;
   margin-bottom: 100px;
-  margin-left: 160px;
-  max-width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 50%;
   text-align: center
 }
 
@@ -223,24 +225,31 @@ border-color: #1CA347;
  }
 
  #myCarousel {
-   max-width: 75% !important;
-   margin-left: 12%
+   max-width: 100% !important;
  }
 
 /* Carousel base class */
 .carousel {
-  height: 800px;
+  height: 500px;
   margin-bottom: 60px;
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
   z-index: 10;
+  bottom: 33%;
 }
-
+.carousel-caption h2 {
+  font-size: 60px;
+}
+.carousel-caption p {
+  font-size: 35px;
+}
 /* Declare heights because of positioning of img element */
 .carousel .item {
   height: 100%;
-  background-color: #777;
+  background-size: cover;
+  background-repeat: no-repeat;
+
 }
 .carousel-inner > .item > img {
   position: absolute;

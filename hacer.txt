@@ -1,0 +1,12 @@
+terminar inscripcion
+seleccion de los id de la request 
+hacer insert y select de cada id
+buscador en la home
+resultado de la busqueda de la home
+mapa en la home	
+inscripcion desde el resultado de la busuqeda
+listado con foto, localidad, provincia, telefono, direccion y servicios con sus precios de gimnasios
+footer 4 columnas 1º barra nav 2º select limit 4 gym 3º ayuda 4º datos contacto 
+
+
+
