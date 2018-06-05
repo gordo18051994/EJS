@@ -21,8 +21,9 @@ a {
 }
 .descripcion {
   margin-top: 100px;
+  font-size: 35px;
   margin-bottom: 100px;
-  margin-left: 100px;
+  margin-left: 160px;
   max-width: 75%;
   text-align: center
 }
@@ -84,6 +85,7 @@ border-color: #ccc;
 -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
 -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
 box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+margin-bottom: 450px
 }
 .panel-login>.panel-heading {
 color: #00415d;

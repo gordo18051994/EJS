@@ -1,6 +1,10 @@
 <html>
 <% include templates/head %>
-    <% include templates/header %>
+<% if (!user) { %>
+    <% include templates/header%>
+        <% } else { %>
+            <% include templates/header_Usuario%>
+                <% } %>
 
         <div class="hg">
             <h1>Gimnasios Actuales</h1>
