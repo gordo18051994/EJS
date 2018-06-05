@@ -114,20 +114,39 @@ var init = function() {
         var nombre = localStorage.Nombre_Gym
         console.log(nombre)
         $.post("/Inscripcion", {nombre: nombre}, function(data){
+          $("#gym").text(data[0].N_gym)
           for(let i = 0; i < data.length; i++){
             if(data[i].N_gym = nombre){
-            
-            $("#ser").append('<li>' + data[i].S_gym + '</li>');
-            $("#pre").append('<li>' + data[i].precio + '</li>');
+              $("#servicio_ins").append('<option id="' + data[i].id_serv + '">' + data[i].S_gym + '</option>');
             }
           }
         })
-    
-    
-    
-  
+        
+        var servicios =[]
+        $("#Selec_serv").on('click', function() {
+          var servicio = $("option:selected").text()
+          console.log(servicio)
+          $.post("/Inscripcion/servicio", {servicio: servicio, nombre: nombre}, function(data){
+          if($("#ser").append('<li>' + data[0].S_gym + '</li>')){
+            servicios = $("#ser li");
+            console.log(servicios)
+          }
+            
+            $("#pre").append('<li>' + data[0].precio + '</li>')
+          })
+          $("option:selected").remove()
+        })
+        console.log("aqui", servicios)
 
-    $.get()
+          
+        $("#inscribir").on('click', function() {
+          for(let i = 0; i < servicios.length; i++) {
+            
+          } 
+        })
+    
+    
+
 
       // var name = $("#gym").text()
       //   $.post("/Inscripcion", {name: name}, function(data) {

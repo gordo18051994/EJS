@@ -45,13 +45,13 @@ api.post("/upd_serv", controllers.upd_serv);
 api.get("/Inscripcion", function(req, res, next) {
   var role = req.session.role
   var user = req.session.user
-  debugger
   if(!user){
     res.render("Sign")
   } else{
   res.render("Inscripcion", {role: role, user: user})
   }
 })
+api.post("/Inscripcion/servicio", controllers.precio_servicio)
 api.post("/Inscripcion", controllers.inscripcion);
 api.get("/getGimnasios", controllers.getGimnasios);
 // api.post("/traerGym", controllers.traerGym);

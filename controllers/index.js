@@ -10,6 +10,8 @@ import inscripcion from './inscripcion';
 import getGimnasios from './getGimnasios';
 import borrar_serv from './borrar_serv';
 import upd_serv from './upd_serv';
+import precio_servicio from './precio_servicio';
+import finalizarInscripcion from './finalizarInscripcion';
 
 exports.login = login;
 exports.registro = registro;
@@ -23,3 +25,5 @@ exports.inscripcion = inscripcion;
 exports.getGimnasios = getGimnasios;
 exports.borrar_serv = borrar_serv;
 exports.upd_serv = upd_serv;
+exports.precio_servicio = precio_servicio
+exports.finalizarInscripcion = finalizarInscripcion

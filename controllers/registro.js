@@ -42,10 +42,8 @@ export default (function(req, res, next) {
         provincia: form.provincia,
         localidad: form.localidad
       };
-      req.session.useremail = results.email;
-      console.log(req.session.useremail);
-      req.session.user = results.id;
       console.log("Result POST: ", results.email);
+      res.send(results)
     }
   });
 });

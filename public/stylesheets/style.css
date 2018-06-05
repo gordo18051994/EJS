@@ -252,3 +252,12 @@ border-color: #1CA347;
 #getgym  {
   border: solid, '10px', red
 }
+.col-md-6 ul li {
+  text-align: center;
+  margin-left: 100px;
+}
+#inscribir {
+  position: relative;
+  left: 55%;
+  width: 200px
+}
