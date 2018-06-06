@@ -23,34 +23,61 @@
                         </div>
                       </div>
                       <div class="item" style="background-image: url('images/gimnasio2.jpg')">
-                        </div>
-                        <div class="item" style="background-image: url('images/imagen6.jpg')">
-                        </div>
                       </div>
-                      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                      </a>
-                      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                      </a>
+                      <div class="item" style="background-image: url('images/imagen6.jpg')">
+                      </div>
                     </div>
-                    <!-- /.carousel -->
-                    <div id="descripcion">
-                      <h1 class="text-center">¿Quieres ganar masa muscular o mejorar tu condición física?</h1>
-                        <p class="descripcion">
-                          Da igual que seas joven o mayor, principiante o avanzado, que vayas solo o con amigos.
-                          Gracias a FindFit te sentirás agusto y podrás organizarte el programa de ejercio perfecto 
-                          gracias a nuestra amplia oferta de gimnasios. Para encontrar el centro mas cercano, consulta
-                           <a href="/gimnasios"><srtong>nuestra lista</srtong></a>.
-                          ¡No esperes mas! Apúntate.
-                        </p>
+                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+                  <!-- /.carousel -->
+                  <div class="row">
+                    <h1 id="titular">Encuentra tu Gimnasio</h1>
+                  </div>
+                  <div class="row" id="buscador">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <input type="text" class="localidad form-control" placeholder="Localidad">
+                      </div>
                     </div>
-                    
-                    
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <input type="text" id="servicio" class="form-control" placeholder="Servicio buscado">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <button type="submit" class="buscador btn btn-default btn-success">Submit</button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6" id="hola">
+                    </div>
+                  </div>
+                  <div id="map"></div>
 
-                    <% include templates/footer %>
+
+
+                  <div id="descripcion">
+                    <h1 class="text-center">¿Quieres ganar masa muscular o mejorar tu condición física?</h1>
+                    <p class="descripcion">
+                      Da igual que seas joven o mayor, principiante o avanzado, que vayas solo o con amigos. Gracias a FindFit te sentirás agusto
+                      y podrás organizarte el programa de ejercio perfecto gracias a nuestra amplia oferta de gimnasios.
+                      Para encontrar el centro mas cercano, consulta
+                      <a href="/gimnasios">
+                        <srtong>nuestra lista</srtong>
+                      </a>. ¡No esperes mas! Apúntate.
+                    </p>
+                  </div>
+
+
+
+                  <% include templates/footer %>
 
                 </body>
 

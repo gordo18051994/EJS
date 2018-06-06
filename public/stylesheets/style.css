@@ -262,11 +262,38 @@ border-color: #1CA347;
   border: solid, '10px', red
 }
 .col-md-6 ul li {
-  text-align: center;
   margin-left: 100px;
 }
 #inscribir {
   position: relative;
   left: 55%;
   width: 200px
+}
+#buscador {
+  max-width: 75%;
+  margin-left: 25%;
+  margin-right: auto;
+}
+
+.buscador {
+  margin-top: 24;
+}
+#titular {
+  margin-left: 40%;
+  margin-right: auto;
+}
+#foto_resultado {
+  height: 300px;
+  margin-left: 350px;
+  margin-top: 50px
+  
+}
+#hola h2 {
+  margin-left: 150px
+}
+
+.detalles_resultado {
+  max-width: 50%;
+  margin-right: auto;
+  margin-bottom: 10px
 }

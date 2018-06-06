@@ -132,7 +132,7 @@ var init = function() {
             // console.log(servicios)
           }
             
-            $("#pre").append('<li>' + data[0].precio + '</li>')
+            $("#pre").append('<li class="lalala">' + data[0].precio + '</li>')
           })
           $("option:selected").remove()
         })
@@ -140,20 +140,26 @@ var init = function() {
 
           
         $("#inscribir").on('click', function() {
-          var serviciosjuan = []
-          $(".esteServicio").each(function( index ) {
-
+          var serviciosjuan;
+          var preciosjuan;
+          // $(".lalala").each(function(index) {
+          //   var precios = $(this).text();
+          //   preciosjuan[index] = precios 
+          // })
+          $(".esteServicio").each(function() {
             var servicio_id = $(this).data('id');
-
-            serviciosjuan[index] = servicio_id
-
+            serviciosjuan = servicio_id
         });
-
+        
         var parametros = {
-            "id_servicios":serviciosjuan
+            id_servicios: serviciosjuan
+            // precio_servicios: preciosjuan
         };
           console.log(parametros)
         //petición ajax
+        // $.post("/FinalizarInscripcion", parametros, function(data) {
+
+        // })
         $.ajax({
             url: "/FinalizarInscripcion",
             method: "post",
@@ -165,31 +171,33 @@ var init = function() {
             },
 
         }).done(function( data ) {
-
-        });
-          var elementos = $(".esteServicio");
           
-          // for(let i = 0; i < servicios.length; i++) {
-            
-          // } 
+        });
+           var elementos = $(".esteServicio"); 
         })
-    
-    
 
+        $(".buscador").on('click', function() {
+           var localidad = $(".localidad").val();
+          var servicio = $("#servicio").val();
+          console.log(localidad)
+          $.post("/getGimnasiosIndex", {localidad: localidad, servicio: servicio}, function(data) {
+            for(let i = 0; i < data.length; i++) {
+              $("#hola").append('<div class="col-md-6"><h2>' + data[i].Nombregym + '</h2><ul>'+
+            '<li>Direccion: ' + data[i].direc_gym + 
+            '</li><li>Localidad: ' + data[i].localidad + 
+            '</li><li>Provincia: ' + data[i].prov_gym + 
+            '</li><li>Teléfono: ' + data[i].tel_gym + 
+            '</li><li>E-mail: ' + data[i].email_gym + 
+            '<li>Precio: ' + data[i].PrecioServicio + '</li>' + 
+            '</li></ul><button id="' + data[i].Nombregym + '" type="button" class="este btn btn-success">Registrar</button></div>')
+            }
+          })
+        })
 
-      // var name = $("#gym").text()
-      //   $.post("/Inscripcion", {name: name}, function(data) {
-        
-        
-      //     for(let i = 0; i < data[i].length; i++){
-            
-      //       if(data[i].N_gym = name){
-            
-      //       $("#ser").append('<li>' + data[i].S_gym + '</li>');
-      //       $("#pre").append('<li>' + data[i].precio + '</li>');
-      //       }
-      //     }
-      //   })
+        $(".este").on('click', function(){
+          console.log("hola")
+          location.href = "/Inscripcion"
+        })
 
     
   
@@ -313,8 +321,8 @@ $().ready(init);
 
 function iniciarMapa() {
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 8,
-    center: {lat: -34.397, lng: 150.644}
+    zoom: 15,
+    center: {lat: 36.717856, lng: -4.433775}
   });
   var geocoder = new google.maps.Geocoder();
 
