@@ -1,0 +1,34 @@
+<html>
+<% include templates/head %>
+  <% if (!role) { %>
+    <% include templates/header%>
+      <% } else if(role==="Empresa"){ %>
+        <% include templates/header_Empresa%>
+          <% } else { %>
+            <% include templates/header_Usuario%>
+              <% } %>
+              <body>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6" id="foto" style="background-image: url('images/usuario.jpg')"></div>
+                        <div class="col-md-6">
+                            <h1>Perfil Usuario</h1>
+                            <ul id="usuario">
+                                <li>Nº De identificacion : <%= user.id%></li>
+                                <li>Nombre: <%= user.Nombre %></li>
+                                <li>Primer Apellido: <%= user.Apellido1 %></li>
+                                <li>Segundo Apellido: <%= user.Apellido2%></li>
+                                <li>Teléfono de contacto: <%= user.Telefono%></li>
+                                <li>Dni: <%= user.DNI%></li>
+                                <li>E-mail: <%= user.Email%></li>
+                                <li>Direccion: <%= user.Direccion%></li>
+                                <li>Localidad: <%= user.Localidad%></li>
+                                <li>Provincia: <%= user.Provincia%></li>
+                            </ul>
+                            
+                        </div>
+                    </div>
+                </div>
+                  <% include templates/footer%>
+              </body>
+</html>

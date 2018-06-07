@@ -24,7 +24,7 @@
                       </div>
                       <div class="item" style="background-image: url('images/gimnasio2.jpg')">
                       </div>
-                      <div class="item" style="background-image: url('images/imagen6.jpg')">
+                      <div class="item" style="background-image: url('images/5gimnasios.jpg')">
                       </div>
                     </div>
                     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -43,20 +43,23 @@
                   <div class="row" id="buscador">
                     <div class="col-md-4">
                       <div class="form-group">
-                        <input type="text" class="localidad form-control" placeholder="Localidad">
+                        <input type="text" style ="padding: 20px;" class="localidad " placeholder="Localidad">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <input type="text" id="servicio" class="form-control" placeholder="Servicio buscado">
+                        <select type="text" style ="padding: 24px;margin-top: 25px;" id="servicio">
+                          <option>Selecione un Servicio</option>
+                        </select>
                       </div>
                     </div>
                     <div class="col-md-4">
-                      <button type="submit" class="buscador btn btn-default btn-success">Submit</button>
+                      <button type="submit" class="buscador btn btn-default btn-success btn-lg">Submit</button>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-md-6" id="hola">
+                    <div class="col-md-12" id="hola">
+                        <div class="alert alert-danger" id="error" role="alert" style="display: none">No hay resultados</div>
                     </div>
                   </div>
                   <div id="map"></div>

@@ -36,6 +36,11 @@ api.get("/panelEmpresa", function(req, res, next) {
   var user = req.session.user
   res.render("panel_empresa", {role: role, user: user});
 })
+api.get("/perfilUsuario", function(req, res, next) {
+  var role = req.session.role
+  var user = req.session.user
+  res.render("perfilUsuario", {role: role, user: user})
+})
 api.get("/Servicio", controllers.getServicios);
 api.post("/Servicio", controllers.precio);
 api.get("/Serv_precio", controllers.serv_precio);

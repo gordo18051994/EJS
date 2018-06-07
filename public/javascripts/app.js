@@ -3,7 +3,7 @@ var init = function() {
   
   		$.post("/borrar_serv",{id:evnt.target.id.substring(3)} , function(){
           $(evnt.target).remove();
-          alert("Servicio borrado")
+          // alert("Servicio borrado")
           location.reload()
       })
     })
@@ -22,7 +22,7 @@ var init = function() {
       
       
   		$.post("/upd_serv",{precio: precio, id: id} , function(){
-          alert("Servicio actualizado")
+          // alert("Servicio actualizado")
           location.reload()
   		})
 
@@ -59,7 +59,7 @@ var init = function() {
     $.post("/Servicio", { servicio: servicio, precio: precio }, function(
       results
     ) {
-      alert("datos enviados");
+      // alert("datos enviados");
       location.href = "/panelEmpresa";
     });
   });
@@ -76,9 +76,9 @@ var init = function() {
           '">' +
           '</ul></div><div class="col-lg-6"><h3>Precios</h3><ul id="pre_' +
           data[i].Nombre +
-          '"></ul></div></div><button type="button" name="' + data[i].Nombre +'" class="traer" id="bt' +
+          '"></ul></div></div><button type="button" name="' + data[i].Nombre +'" class="traer btn btn-info btn-lg" id="bt' +
           data[i].Nombre +
-          '">' + 'View details &raquo;</button></div>'
+          '">' + 'Elegir Servicio</button></div>'
       );
     }
   });
@@ -105,7 +105,7 @@ var init = function() {
   })
 
     setTimeout(()=>{
-      $(".traer").on('click', function() {
+      $(document).on('click', ".traer", function() {
         var nombre = $(this).attr("name");
         localStorage.setItem("Nombre_Gym", nombre)
         location.href = "/Inscripcion"
@@ -165,14 +165,10 @@ var init = function() {
             method: "post",
             data:parametros,
             success: function(data) {
-              /* $(contenedor).html(data.notificaciones);
-               $("#intervalo-" + id_webcam).html(data.intervalos);*/
                alert("OK");
             },
 
-        }).done(function( data ) {
-          
-        });
+        })
            var elementos = $(".esteServicio"); 
         })
 
@@ -181,22 +177,27 @@ var init = function() {
           var servicio = $("#servicio").val();
           console.log(localidad)
           $.post("/getGimnasiosIndex", {localidad: localidad, servicio: servicio}, function(data) {
-            for(let i = 0; i < data.length; i++) {
+            debugger
+
+              for(let i = 0; i < data.length; i++) {
               $("#hola").append('<div class="col-md-6"><h2>' + data[i].Nombregym + '</h2><ul>'+
             '<li>Direccion: ' + data[i].direc_gym + 
             '</li><li>Localidad: ' + data[i].localidad + 
             '</li><li>Provincia: ' + data[i].prov_gym + 
             '</li><li>Teléfono: ' + data[i].tel_gym + 
             '</li><li>E-mail: ' + data[i].email_gym + 
+            '<li>Servicio: ' + data[i].Nombreser + '</li>'+
             '<li>Precio: ' + data[i].PrecioServicio + '</li>' + 
-            '</li></ul><button id="' + data[i].Nombregym + '" type="button" class="este btn btn-success">Registrar</button></div>')
+            '</li></ul><button id="' + data[i].Nombregym + '" type="button" class="este btn btn-success btn-lg" ' +
+            'style="padding: 20;font-size: 25px;margin-left:150px;">Registrar</button></div>')
             }
-          })
+            
+          })  
         })
 
-        $(".este").on('click', function(){
+        $(document).on('click', '.este',function(){
           console.log("hola")
-          location.href = "/Inscripcion"
+          location.href = "/gimnasios"
         })
 
     
@@ -220,7 +221,6 @@ var init = function() {
       console.log(" jquery", d_form);
     }).done(function(results) {
       if (results.error === null) {
-        alert("Usuario Registrado");
         location.href = "/Sign";
       } else {
         $("#error").css("display", "block");
@@ -242,7 +242,6 @@ var init = function() {
       .post("/reg_empresa", form_empresa, function(results) {})
       .done(function(results) {
         if (results.error === null) {
-          alert("Empresa Registrado");
           location.href = "/panelEmpresa";
         } else {
           $("#error").css("display", "block");
@@ -254,12 +253,8 @@ var init = function() {
     var email = $("#email").val();
     var password = $("#password").val();
     $.post("/Sign", { email: email, password: password }, function() {
-      alert("Logueado");
     }).done(function() {
-      $.get("/", function() {
-        alert("pagina principal");
-        location.href = "/";
-      });
+      location.href = "/perfilUsuario"
     });
   });
 
@@ -267,10 +262,8 @@ var init = function() {
     var email = $("#email").val();
     var password = $("#password").val();
     $.post("/SignEmpresa", { email: email, password: password }, function() {
-      alert("Empresa Logueada");
     }).done(function() {
       $.get("/", function() {
-        alert("pagina principal Empresa");
         location.href = "/panelEmpresa";
       });
     });
@@ -278,7 +271,6 @@ var init = function() {
 
   $("#Logout").on("click", function() {
     $.get("/Logout", function() {
-      alert("LogOut con Éxito");
       // location.href("/");
     });
   });

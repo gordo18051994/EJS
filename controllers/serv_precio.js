@@ -1,6 +1,6 @@
 import sql from 'msnodesqlv8';
 var config =
-  "server=A1010;Database=proyecto;Trusted_Connection=Yes;Driver={SQL Server Native Client 11.0}";
+  "server=DESKTOP-VFJDS7F;Database=proyecto;Trusted_Connection=Yes;Driver={SQL Server Native Client 11.0}";
   import session from 'express-session';
 export default (function(req, res, next) {
     var gym = req.session.userid;
