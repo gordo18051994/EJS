@@ -10,8 +10,10 @@
               <body>
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-6" id="foto" style="background-image: url('images/usuario.jpg')"></div>
-                        <div class="col-md-6">
+                        <div class="col-md-4" id="foto" style="background-image: url('images/usuario.jpg')">
+
+                        </div>
+                        <div class="col-md-4">
                             <h1>Perfil Usuario</h1>
                             <ul id="usuario">
                                 <li>Nº De identificacion : <%= user.id%></li>
@@ -25,8 +27,13 @@
                                 <li>Localidad: <%= user.Localidad%></li>
                                 <li>Provincia: <%= user.Provincia%></li>
                             </ul>
-                            
                         </div>
+                        <div class="col-md-4">
+                          <h1>Inscripciones</h1>
+                            <ul id="inscripciones">
+                              
+                            </ul>
+                          <div>
                     </div>
                 </div>
                   <% include templates/footer%>

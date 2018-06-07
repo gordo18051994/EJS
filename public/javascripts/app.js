@@ -195,12 +195,21 @@ var init = function() {
           })  
         })
 
+        $(".new_busqueda").on('click', function() {
+          location.reload();
+        })
+
         $(document).on('click', '.este',function(){
           console.log("hola")
           location.href = "/gimnasios"
         })
-
-    
+        // var user = req.session.user.id
+        // $.post("/getInscripciones", {user: user}, function(data) {
+        //   for(let i = 0; i < data.length; i++) {
+        //     $("#Inscripciones").append('<li>' +  + '</li>')
+        //   }
+          
+        // })
   
 
 
@@ -306,36 +315,65 @@ var init = function() {
     });
   });
 };
+function initMapMultiPuntosCenter() {
+  
+  var latlong1 = new google.maps.LatLng(36.7647499, -4.5642737);
+  var latlong2 = new google.maps.LatLng(36.718855, -4.421054);
+  var latlong3 = new google.maps.LatLng(36.722588, -4.442270);
+  
+  var opcionesMapa = {
+      center: latlong1,
+      zoom: 16,
+      mapTypeControl: true,
+      navigationControlOptions: {style:google.maps.NavigationControlStyle.SMALL}
+      
+  };
+  
+  var map = new google.maps.Map(document.getElementById("map"), opcionesMapa);
+  var marker1 = new google.maps.Marker({position:latlong1, map:map, title:"Synergym"});
+  var marker2 = new google.maps.Marker({position:latlong2, map:map, title:"Atenas"});
+  var marker3 = new google.maps.Marker({position:latlong3, map:map, title:"Slimfit"});
 
+  
+  var boundbox = new google.maps.LatLngBounds();
+  
+  boundbox.extend(latlong1);
+  boundbox.extend(latlong2);
+  boundbox.extend(latlong3);
+  
+  map.setCenter(boundbox.getCenter());
+  map.fitBounds(boundbox);
+  
+}
 $().ready(init);
 
 
 
-function iniciarMapa() {
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 15,
-    center: {lat: 36.717856, lng: -4.433775}
-  });
-  var geocoder = new google.maps.Geocoder();
+// function iniciarMapa() {
+//   var map = new google.maps.Map(document.getElementById('map'), {
+//     zoom: 15,
+//     center: {lat: 36.717856, lng: -4.433775}
+//   });
+//   var geocoder = new google.maps.Geocoder();
 
-  document.getElementById('submit').addEventListener('click', function() {
-    geocodeAddress(geocoder, map);
-  });
-}
+//   document.getElementById('submit').addEventListener('click', function() {
+//     geocodeAddress(geocoder, map);
+//   });
+// }
 
-function geocodeAddress(geocoder, resultsMap) {
-  var address = document.getElementById('address').value;
-  resultsMap
-  geocoder.geocode({'address': address + "España"}, function(results, status) {
-    if (status === 'OK') {
-      resultsMap.setCenter(results[0].geometry.location);
-      var marker = new google.maps.Marker({
-        map: resultsMap,
-        position: results[0].geometry.location
-      });
+// function geocodeAddress(geocoder, resultsMap) {
+//   var address = document.getElementById('address').value;
+//   resultsMap
+//   geocoder.geocode({'address': address + "España"}, function(results, status) {
+//     if (status === 'OK') {
+//       resultsMap.setCenter(results[0].geometry.location);
+//       var marker = new google.maps.Marker({
+//         map: resultsMap,
+//         position: results[0].geometry.location
+//       });
 
-    } else {
-      alert('Geocode was not successful for the following reason: ' + status);
-    }
-  });
-}
+//     } else {
+//       alert('Geocode was not successful for the following reason: ' + status);
+//     }
+//   });
+// }

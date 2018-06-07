@@ -227,7 +227,15 @@ a {
    text-align: center
 
  }
-
+ .borrar {
+   margin-left: 20px;
+ }
+ #acciones button{
+   margin-bottom: 10px
+ }
+#registrar_servicio {
+  padding: 20px;
+}
  #Gimnasios {
    max-width: 75%;
    margin-left: 15%;
@@ -288,6 +296,7 @@ a {
 }
 #usuario {
   margin-left: -16%;
+  margin-bottom: 35%
 }
 #usuario li {
   margin-bottom: 15;
@@ -299,18 +308,37 @@ a {
 ul {
   list-style: none;
 }
+#servicio_ins {
+  padding: 0px;
+  height: 50px;
+  font-size: 22px
+}
+#Selec_serv {
+  padding: 15px;
+  font-size: 20px
+}
 #inscribir {
   position: relative;
   left: 55%;
   width: 200px
+}
+#eleg_ser h3 {
+  font-size: 30px;
 }
 #buscador {
   max-width: 75%;
   margin-left: 25%;
   margin-right: auto;
 }
+#ultimo {
+  margin-top: 25px;
+}
 
 .buscador {
+  margin-top: 28;
+  font-size: 25px
+}
+.new_busqueda {
   margin-top: 28;
   font-size: 25px
 }
