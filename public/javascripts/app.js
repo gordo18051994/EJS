@@ -212,7 +212,7 @@ var init = function() {
               location.reload();
             } else { 
               for(let i = 0; i < data.length; i++) {
-                $("#hola").append('<div class="col-md-6"><h2>' + data[i].Nombregym + '</h2><ul>'+
+                $("#hola").append('<div class="col-md-6"><h2 id="' + data[i].id_tabla + '">' + data[i].Nombregym + '</h2><ul>'+
               '<li>Direccion: ' + data[i].direc_gym + 
               '</li><li>Localidad: ' + data[i].localidad + 
               '</li><li>Provincia: ' + data[i].prov_gym + 
@@ -234,8 +234,9 @@ var init = function() {
         })
 
         $(document).on('click', '.este',function(){
-          console.log("hola")
-          location.href = "/gimnasios"
+          var gym = $(this).attr("id")
+          localStorage.setItem("Nombre_Gym", gym)
+          location.href = "/Inscripcion"
         })
         $.post("/getInscripciones", function(data) {
           for(let i = 0; i < data.length; i++) {
