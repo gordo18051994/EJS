@@ -24,7 +24,6 @@ var config =
                   precio: precio,
                   servicio: servicio
               }
-            console.log("Result GymSer : ", results)
             res.send(results)
           }
       })

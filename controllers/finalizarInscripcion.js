@@ -8,12 +8,7 @@ var config =
       var body = req.body
       var id_usuario = req.session.user.id;
       var id_servicio = req.body.id_servicios
-      console.log(id_usuario)
-      console.log(body)
-      console.log(fecha)
-      console.log(id_servicio)
         sql.query(config, `SELECT PrecioServicio AS precio FROM dbo.GymSer WHERE id = '${id_servicio}'`, function(error, resultado) {
-          console.log(resultado)
           if (error) {
             console.log(error)
           } else {

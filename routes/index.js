@@ -41,7 +41,7 @@ api.get("/perfilUsuario", function(req, res, next) {
   var user = req.session.user
   res.render("perfilUsuario", {role: role, user: user})
 })
-// api.post("/getInscripciones", controllers.getInscripciones)
+api.post("/getInscripciones", controllers.getInscripciones)
 api.get("/Servicio", controllers.getServicios);
 api.post("/Servicio", controllers.precio);
 api.get("/Serv_precio", controllers.serv_precio);
@@ -57,6 +57,7 @@ api.get("/Inscripcion", function(req, res, next) {
   res.render("Inscripcion", {role: role, user: user})
   }
 })
+api.post("/borrarInscripcion", controllers.borrarInscripcion)
 api.post("/Inscripcion/servicio", controllers.precio_servicio)
 api.post("/Inscripcion", controllers.inscripcion);
 api.get("/getGimnasios", controllers.getGimnasios);

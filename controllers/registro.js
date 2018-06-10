@@ -42,7 +42,6 @@ export default (function(req, res, next) {
         provincia: form.provincia,
         localidad: form.localidad
       };
-      console.log("Result POST: ", results.email);
       res.send(results)
     }
   });

@@ -21,7 +21,6 @@ var config =
     sql.query(config, query, function(error, results, fields) {
       if (error) {
         console.log(error);
-        console.log(form_empresa.telefono);
         var results = {
           error: error
         }
@@ -40,7 +39,6 @@ var config =
         req.session.useremail = results.email;
         console.log(req.session.useremail);
         req.session.user = results.id;
-        console.log("Result Gimnasio: ", results);
         res.send(results);
       }
     });

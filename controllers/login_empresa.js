@@ -4,7 +4,6 @@ var config =
 export default(function(req, res) {
     var email = req.body.email;
   var password = req.body.password;
-  console.log(email, password)
   var query =
     "SELECT * FROM Gimnasio WHERE Email ='" +
     email +
@@ -20,8 +19,8 @@ export default(function(req, res) {
         req.session.role = "Empresa";
       // req.session.userId = results[0].id;
       // req.session.user = results[0];
-      console.log(req.session.user)
-      console.log("Result Login: ", JSON.stringify(results[0].Email));
+      // console.log(req.session.user)
+      // console.log("Result Login: ", JSON.stringify(results[0].Email));
       console.log(results[0].Nombre); 
       console.log(results[0].id);
       var results = {

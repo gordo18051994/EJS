@@ -53,6 +53,18 @@ var init = function() {
     }
   });
 
+  $("#borrado").on('click', function() {
+    var id = $("#numIns").val()
+    $.post("/borrarInscripcion", {id: id}, function(data) {
+      if(data.error == null){
+        alert("Su inscripcion se ha borrado correctamente");
+        location.reload();
+      }
+      
+
+    })
+  })
+  
   $("#registrar_servicio").on("click", function(data) {
     var precio = $("#precio").val();
     var servicio = $("#servicio").val();
@@ -65,8 +77,24 @@ var init = function() {
   });
 
   $.get("/getGimnasios", function(data) {
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < 3; i++) {
       $("#getgym").append(
+        '<div class="col-lg-4"><div class="row"><h2 id="' +
+          data[i].Nombre +
+          '">' +
+          data[i].Nombre +
+          '</h2><div class="col-lg-6"><h3>Servicios</h3><ul id="ser_' +
+          data[i].Nombre +
+          '">' +
+          '</ul></div><div class="col-lg-6"><h3>Precios</h3><ul id="pre_' +
+          data[i].Nombre +
+          '"></ul></div></div><button type="button" name="' + data[i].Nombre +'" class="traer btn btn-info btn-lg" id="bt' +
+          data[i].Nombre +
+          '">' + 'Elegir Servicio</button></div>'
+      );
+    }
+    for (let i = 3; i < data.length; i++) {
+      $("#getgym2").append(
         '<div class="col-lg-4"><div class="row"><h2 id="' +
           data[i].Nombre +
           '">' +
@@ -165,7 +193,8 @@ var init = function() {
             method: "post",
             data:parametros,
             success: function(data) {
-               alert("OK");
+               alert("Se ha inscrito correctamente");
+               location.href = "/perfilUsuario"
             },
 
         })
@@ -178,19 +207,24 @@ var init = function() {
           console.log(localidad)
           $.post("/getGimnasiosIndex", {localidad: localidad, servicio: servicio}, function(data) {
             debugger
-
+            if(data == "") {
+              alert("No hay resultados en esta búsqueda");
+              location.reload();
+            } else { 
               for(let i = 0; i < data.length; i++) {
-              $("#hola").append('<div class="col-md-6"><h2>' + data[i].Nombregym + '</h2><ul>'+
-            '<li>Direccion: ' + data[i].direc_gym + 
-            '</li><li>Localidad: ' + data[i].localidad + 
-            '</li><li>Provincia: ' + data[i].prov_gym + 
-            '</li><li>Teléfono: ' + data[i].tel_gym + 
-            '</li><li>E-mail: ' + data[i].email_gym + 
-            '<li>Servicio: ' + data[i].Nombreser + '</li>'+
-            '<li>Precio: ' + data[i].PrecioServicio + '</li>' + 
-            '</li></ul><button id="' + data[i].Nombregym + '" type="button" class="este btn btn-success btn-lg" ' +
-            'style="padding: 20;font-size: 25px;margin-left:150px;">Registrar</button></div>')
+                $("#hola").append('<div class="col-md-6"><h2>' + data[i].Nombregym + '</h2><ul>'+
+              '<li>Direccion: ' + data[i].direc_gym + 
+              '</li><li>Localidad: ' + data[i].localidad + 
+              '</li><li>Provincia: ' + data[i].prov_gym + 
+              '</li><li>Teléfono: ' + data[i].tel_gym + 
+              '</li><li>E-mail: ' + data[i].email_gym + 
+              '<li>Servicio: ' + data[i].Nombreser + '</li>'+
+              '<li>Precio: ' + data[i].PrecioServicio + '</li>' + 
+              '</li></ul><button id="' + data[i].Nombregym + '" type="button" class="este btn btn-success btn-lg" ' +
+              'style="padding: 20;font-size: 25px;margin-left:150px;">Registrar</button></div>')
+              }
             }
+              
             
           })  
         })
@@ -203,13 +237,16 @@ var init = function() {
           console.log("hola")
           location.href = "/gimnasios"
         })
-        // var user = req.session.user.id
-        // $.post("/getInscripciones", {user: user}, function(data) {
-        //   for(let i = 0; i < data.length; i++) {
-        //     $("#Inscripciones").append('<li>' +  + '</li>')
-        //   }
+        $.post("/getInscripciones", function(data) {
+          for(let i = 0; i < data.length; i++) {
+            $("#Inscripciones").append('<li>Nº Inscripcion : ' + data[i].id + '</li>' + 
+            '<li>Gimnasio: ' + data[i].NombreGimnasio + 
+            '<li>Servicio: ' + data[i].NombreServicio + '</li>' + 
+            '</li>' + '<li>Fecha de Inscripcion: ' + data[i].FechaInscripcion + '</li>' + 
+          '<li>Precio de Inscripcion: ' + data[i].PrecioInscripcion + '</li><br>')
+          }
           
-        // })
+        })
   
 
 
@@ -251,7 +288,7 @@ var init = function() {
       .post("/reg_empresa", form_empresa, function(results) {})
       .done(function(results) {
         if (results.error === null) {
-          location.href = "/panelEmpresa";
+          location.href = "/SignEmpresa";
         } else {
           $("#error").css("display", "block");
         }

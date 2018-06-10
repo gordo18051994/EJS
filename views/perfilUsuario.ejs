@@ -26,15 +26,44 @@
                                 <li>Direccion: <%= user.Direccion%></li>
                                 <li>Localidad: <%= user.Localidad%></li>
                                 <li>Provincia: <%= user.Provincia%></li>
+                                <button type="button" data-toggle="modal" data-target="#myModal1" id="borrarInscripcion" class="btn btn-danger">Cancelar Inscripcion</button>
                             </ul>
+                           
+                            
                         </div>
                         <div class="col-md-4">
-                          <h1>Inscripciones</h1>
-                            <ul id="inscripciones">
-                              
-                            </ul>
-                          <div>
+                          <h1 id="ide">Inscripciones</h1>
+                          <ul id="Inscripciones">
+                            
+                          </ul>
+                        </div>
+                        
                     </div>
+                
+                </div>
+                <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Borrar Inscripcion</h4>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3>¿Que inscripcion desea borrar?</h3>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" id="numIns" placeholder="Nº de Inscripcion">
+                            </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" id="borrado" data-dismiss="modal">Borrar Inscripcion</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                   <% include templates/footer%>
               </body>

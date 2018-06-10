@@ -4,7 +4,6 @@ var config =
 
   export default (function(req, res, next) {
     var name = req.body.nombre
-    console.log(name)
       var query = `SELECT p.id AS id_tabla
       ,s.id AS id_serv
       ,g.Nombre AS N_gym

@@ -22,7 +22,6 @@ var config =
             }
             res.send(results)
         } else {
-            console.log(results)
             // console.log("usuario registra servicio")
             res.send(results)
             
